@@ -1,0 +1,22 @@
+# .devcontainer/docker-comspose.yml
+version: '4'
+
+services:
+  devpod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DockerUSER: ${CONTAINER_USER}
+        DockerUID: ${CONTAINER_UID}
+        DockerGID: ${CONTAINER_GID}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /var/run/docker.sock:/var/run/docker-host.sock
+      - /etc/timezone:/etc/timezone:cached
+      - /etc/localtime:/etc/localtime:cached
+      # # SSH
+      # - ${HOME}/.ssh:/home/${USER}/.ssh:cached
+      # # Home folder
+      # - .:/home/${USER}/
+    working_dir: /home/${USER}/

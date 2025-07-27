@@ -1,0 +1,14 @@
+{
+  "name": "devpod-environment",
+  "dockerComposeFile": ["./docker-compose.yml"],
+  "service": "devpod",
+  "features": {},
+  "containerUser": "${localEnv:USER}",
+  "initializeCommand": "${localWorkspaceFolder}/.devcontainer/initialize-command.sh",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
+  "overrideCommand": true,
+  "workspaceFolder": "/home/${localEnv:USER}/",
+  "remoteUser": "${localEnv:USER}"
+}

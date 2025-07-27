@@ -1,4 +1,3 @@
-# Dockerfile
 # Use Ubuntu 24.04 as the base image
 FROM ubuntu:24.04
 
@@ -33,7 +32,7 @@ RUN if getent passwd $DockerUID > /dev/null; then userdel -rf $(getent passwd $D
     && groupadd --force --gid $DockerGID $DockerUSER \
     && useradd --no-log-init --uid $DockerUID --gid $DockerGID -m $DockerUSER \
     && mkdir -p /etc/sudoers.d/ \
-    && echo $DockerUSER ALL=\(root\) NOPASSWD:ALL > /etc/sudoers`.d/$DockerUSER \
+    && echo $DockerUSER ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$DockerUSER \
     && chmod 0440 /etc/sudoers.d/$DockerUSER
 
 USER $DockerUSER
